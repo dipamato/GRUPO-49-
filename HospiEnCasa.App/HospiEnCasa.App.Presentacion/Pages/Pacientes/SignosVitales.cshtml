@@ -1,0 +1,73 @@
+﻿@page
+@using HospiEnCasa.App.Dominio
+@model HospiEnCasa.App.Presentacion.Pages.SignosVitalesModel
+@{
+}
+
+<h2 style="text-align: center; color: green;">Registro de Signos Vitales</h2>
+
+<br>
+
+<div class="border">
+    <form method="post">        
+        <div class="container" style="padding: 50px;">
+            <div class="form-group">
+                
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="signoVital.FechaHora"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="signoVital.FechaHora" class="form-control">
+                    </div>
+                    <span asp-validation-for="signoVital.FechaHora" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="signoVital.Valor"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="signoVital.Valor"class="form-control">
+                    </div>
+                    <span asp-validation-for="signoVital.Valor"class="text-danger"></span>
+                </div>
+            </div>
+
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="signoVital.Signo"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-select form-control" asp-for="signoVital.Signo" asp-items="@Html.GetEnumSelectList<TipoSigno>()" >
+                            
+                        </select>
+
+                    </div>
+                    <span asp-validation-for="signoVital.Signo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-2" >
+                        <input type="submit" value="Guardar" class="btn btn-primary form-control">
+                    </div>
+                    <div class="col-sm-2">
+                        <a asp-page="/Index" class="btn btn-success form-control">Volver</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+<br>
+

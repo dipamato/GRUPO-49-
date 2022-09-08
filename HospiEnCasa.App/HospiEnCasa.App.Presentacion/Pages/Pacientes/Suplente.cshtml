@@ -1,0 +1,87 @@
+﻿@page
+@using HospiEnCasa.App.Dominio
+@model HospiEnCasa.App.Presentacion.Pages.SuplenteModel
+@{
+}
+
+<br>
+<form method="post">
+<label asp-for="paciente.NumeroTelefono"></label>
+<input asp-for="paciente.NumeroTelefono">
+<input type="submit" value="Consultar" class="btn btn-primary">
+</form>
+
+<br>
+
+<div class="border">
+    <form method="post" asp-page-handler="edit">        
+        <div class="container" style="padding: 50px;">
+            <div class="form-group">
+                <input type="hidden" asp-for="paciente.Id">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="paciente.Nombre"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="paciente.Nombre" class="form-control">
+                    </div>
+                    <span asp-validation-for="paciente.Nombre" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="paciente.Apellidos"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="paciente.Apellidos" class="form-control">
+                    </div>
+                    <span asp-validation-for="paciente.Apellidos" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label >Numero Telefono</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input asp-for="paciente.NumeroTelefono" class="form-control">
+                    </div>
+                    <span asp-validation-for="paciente.NumeroTelefono" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="paciente.Genero" ></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-select form-control" asp-for="paciente.Genero" asp-items="@Html.GetEnumSelectList<Genero>()" >
+                            <option>@Model.paciente.Genero</option>
+                        </select>
+
+                    </div>
+                    <span asp-validation-for="paciente.Genero" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-2" >
+                        <input type="submit" value="Editar" class="btn btn-primary form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <a type="button" asp-page="/Pacientes/SignosVitales" asp-route-pacienteId=@Model.paciente.Id class="btn btn-success form-control">Registrar Signos Vitales</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
