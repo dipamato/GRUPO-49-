@@ -1,6 +1,7 @@
 ﻿@page
 @model HospiEnCasa.App.Presentacion.Pages.FormularioPModel
 @{
+    
 }
 
 <br>
@@ -9,9 +10,10 @@
 
 <div class="border">
     <form method="post">
+        <input name="uno" type="text">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="container" style="padding: 50px;">
-            <div class="form-group">
+            <div class="form-group ">
                 <div class="row">
                     <div class="col-sm-2">
                         <label asp-for="Paciente.Nombre"></label>

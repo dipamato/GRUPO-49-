@@ -4,84 +4,62 @@
 @{
 }
 
-<br>
-<form method="post">
-<label asp-for="paciente.NumeroTelefono"></label>
-<input asp-for="paciente.NumeroTelefono">
-<input type="submit" value="Consultar" class="btn btn-primary">
-</form>
-
-<br>
+<br><h2>Consultar Paciente</h2>
 
 <div class="border">
-    <form method="post" asp-page-handler="edit">        
-        <div class="container" style="padding: 50px;">
-            <div class="form-group">
-                <input type="hidden" asp-for="paciente.Id">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label asp-for="paciente.Nombre"></label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input asp-for="paciente.Nombre" class="form-control">
-                    </div>
-                    <span asp-validation-for="paciente.Nombre" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label asp-for="paciente.Apellidos"></label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input asp-for="paciente.Apellidos" class="form-control">
-                    </div>
-                    <span asp-validation-for="paciente.Apellidos" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label >Numero Telefono</label>
-                    </div>
-                    <div class="col-sm-4">
-                        <input asp-for="paciente.NumeroTelefono" class="form-control">
-                    </div>
-                    <span asp-validation-for="paciente.NumeroTelefono" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <label asp-for="paciente.Genero" ></label>
-                    </div>
-                    <div class="col-sm-4">
-                        <select class="form-select form-control" asp-for="paciente.Genero" asp-items="@Html.GetEnumSelectList<Genero>()" >
-                            <option>@Model.paciente.Genero</option>
-                        </select>
-
-                    </div>
-                    <span asp-validation-for="paciente.Genero" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-2 offset-sm-2" >
-                        <input type="submit" value="Editar" class="btn btn-primary form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <a type="button" asp-page="/Pacientes/SignosVitales" asp-route-pacienteId=@Model.paciente.Id class="btn btn-success form-control">Registrar Signos Vitales</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <form method="post">
+        <label for="">Numero Telefono</label>
+        <input asp-for="paciente.NumeroTelefono">
+        <input type="submit" value="Consultar" name="Consulta"class="btn btn-success form-control">
     </form>
 
 </div>
 
+<br>
 
+<div class="border" style="background-color: #C1ECE9;">
+    <form method="post" asp-page-handler="edit">
+
+
+        <input type="hidden" asp-for="paciente.Id">
+        <div class="input-group mb-3">
+            <input type="text" asp-for="paciente.Nombre" class="form-control" placeholder="Nombre">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Apellidos" asp-for="paciente.Apellidos">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Numero Telefono" asp-for="paciente.NumeroTelefono">
+        </div>
+
+        <div class="input-group mb-3">
+            <select class="form-select form-control" asp-for="paciente.Genero" asp-items="@Html.GetEnumSelectList<Genero>()"></select>
+        </div>
+
+        <div class="input-group mb-3">
+            <select id="medico" onchange="Cambiar();"class="form-select form-control"  asp-items="Model.nombresM">
+                <option  value="">Seleccione su Medico</option>
+            </select>
+            <input name="valor" id="captura" type="text">
+            <script type="text/javascript">
+             function Cambiar(){
+                var uno=document.getElementById("medico");
+                var seleccion=uno.options[uno.selectedIndex].text;
+                document.getElementById("captura").value=seleccion;
+                alert.Window(seleccion);
+             }
+            </script>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="submit" value="Guardar" name="Guardar" class="btn btn primary form-control">
+            <a class="btn btn-info form-control"  asp-route-pacienteId="@Model.paciente.Id" asp-page="/Pacientes/SignosVitales">Registrar Signos Vitales</a>
+        </div>
+
+
+    </form>
+
+
+</div>

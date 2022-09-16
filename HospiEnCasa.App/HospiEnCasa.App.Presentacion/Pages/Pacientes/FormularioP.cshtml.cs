@@ -26,6 +26,8 @@ namespace HospiEnCasa.App.Presentacion.Pages
 
         public async Task<IActionResult> OnPost()
         {
+            string Uno=Request.Form["uno"];
+            Console.WriteLine(Uno);
             if(!ModelState.IsValid){
                 return Page();
             }

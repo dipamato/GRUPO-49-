@@ -13,7 +13,7 @@ namespace HospiEnCasa.App.Dominio
         public string Nombre { get; set; }
         [Required]
         public string Apellidos { get; set; }
-        [Required]
+        
         public string NumeroTelefono { get; set; }
         // Genero de la persona
         public Genero Genero { set; get; }
